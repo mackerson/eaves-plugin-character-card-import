@@ -1,0 +1,23 @@
+{
+  "id": "com.enclave.character-card-import",
+  "name": "Character Card Import",
+  "version": "1.0.0",
+  "description": "Import AI character cards (PNG with embedded metadata) as Enclave agents",
+  "author": "Enclave",
+  "type": "import",
+  "entry": "index.cjs",
+  "sandboxVersion": 1,
+  "ui": {
+    "entry": "ui/dist/index.js",
+    "components": {
+      "CharacterCardImportWizard": "named"
+    }
+  },
+  "icon": "imports",
+  "permissions": [
+    "ui:views:register",
+    "events:listen",
+    "events:emit",
+    "data:agents:write"
+  ]
+}
