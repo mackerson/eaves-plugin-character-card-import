@@ -3,6 +3,7 @@
  * Imports AI character cards (PNG with embedded metadata) as agents
  */
 
+const fs = require('fs');
 const CharacterCardParser = require('./lib/CharacterCardParser');
 const AgentConverter = require('./lib/AgentConverter');
 
@@ -39,11 +40,24 @@ module.exports = {
         const parser = new CharacterCardParser(context);
         const card = await parser.parse(filePath);
 
+        // Inline the PNG as a data URL so the preview UI can render it
+        // directly. file:// URLs are blocked by the renderer's CSP, and
+        // the file-service:// protocol only serves files registered as
+        // attachments. base64 keeps the wire shape simple and the image
+        // is small (character card PNGs are typically <500 KB).
+        let imageDataUrl;
+        try {
+          const png = fs.readFileSync(filePath);
+          imageDataUrl = `data:image/png;base64,${png.toString('base64')}`;
+        } catch (e) {
+          context.utils.log.warn('Could not encode card image for preview:', e?.message);
+        }
+
         context.utils.log.info('Successfully parsed character card:', card.data.name);
 
         context.events.emit('character-card-import:preview-result', {
           success: true,
-          card: card,
+          card: imageDataUrl ? { ...card, imageDataUrl } : card,
         });
       } catch (error) {
         context.utils.log.error('Failed to preview character card:', error);

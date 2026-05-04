@@ -5,12 +5,14 @@ interface CardPreviewProps {
   onBack: () => void;
 }
 
-export function CardPreview({ card, filePath, onContinue, onBack }: CardPreviewProps) {
+export function CardPreview({ card, onContinue, onBack }: CardPreviewProps) {
   const data = card.data || card;
 
-  // Extract a preview image URL from the file path
-  // Note: In a real implementation, we'd convert this to a data URL or serve it
-  const imageUrl = `file://${filePath}`;
+  // The preview handler in the plugin's index.cjs base64-encodes the PNG
+  // and attaches it as imageDataUrl. file:// URLs are CSP-blocked by the
+  // renderer and the file-service:// protocol only knows about persisted
+  // attachments — neither works for a card that hasn't been imported yet.
+  const imageUrl: string | undefined = card.imageDataUrl;
 
   return (
     <div className="space-y-6">
@@ -25,16 +27,19 @@ export function CardPreview({ card, filePath, onContinue, onBack }: CardPreviewP
       <div className="flex gap-6">
         {/* Avatar */}
         <div className="flex-shrink-0">
-          <div className="w-32 h-32 rounded-lg overflow-hidden bg-bg-tertiary border border-border-primary">
-            <img
-              src={imageUrl}
-              alt={data.name}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                // Fallback if image fails to load
-                (e.target as HTMLImageElement).style.display = 'none';
-              }}
-            />
+          <div className="w-32 h-32 rounded-lg overflow-hidden bg-bg-tertiary border border-border-primary flex items-center justify-center">
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt={data.name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            ) : (
+              <span className="text-text-tertiary text-xs text-center px-2">No preview</span>
+            )}
           </div>
         </div>
 
