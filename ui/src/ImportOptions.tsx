@@ -357,7 +357,19 @@ function ModelCombobox({
         className="w-full px-3 py-2 bg-bg-tertiary border border-border-primary rounded-md text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
       />
       {open && filtered.length > 0 && (
-        <ul className="absolute z-20 mt-1 w-full max-h-64 overflow-y-auto rounded-md border border-border-primary bg-bg-secondary shadow-lg text-sm">
+        // Inline style for the background — Tailwind theme tokens like
+        // bg-bg-secondary can resolve to semi-transparent values in some
+        // themes, which lets the form below show through the popover.
+        // Pin to an opaque var fallback and bump z-index above sibling
+        // form rows so checkboxes / labels can't bleed through.
+        <ul
+          className="absolute mt-1 w-full max-h-64 overflow-y-auto rounded-md border border-border-primary shadow-lg text-sm"
+          style={{
+            zIndex: 50,
+            background: 'var(--bg-secondary, #1a1a1a)',
+            color: 'var(--text-primary, #fff)',
+          }}
+        >
           {filtered.map((opt, idx) => (
             <li
               key={opt}
