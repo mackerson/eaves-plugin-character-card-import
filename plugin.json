@@ -18,6 +18,7 @@
     "ui:views:register",
     "events:listen",
     "events:emit",
-    "data:agents:write"
+    "data:agents:write",
+    "system:filesystem"
   ]
 }
