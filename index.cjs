@@ -1,5 +1,5 @@
 /**
- * Character Card Import Plugin for Enclave
+ * Character Card Import Plugin for Eaves
  * Imports AI character cards (PNG with embedded metadata) as agents
  */
 

@@ -1,13 +1,13 @@
 # Character Card Import
 
 **Version**: 1.0.0
-**ID**: `com.enclave.character-card-import`
+**ID**: `com.eaves.character-card-import`
 
-Import AI character cards (PNG with embedded metadata) as Enclave agents.
+Import AI character cards (PNG with embedded metadata) as Eaves agents.
 
-This plugin ships with Enclave (`tier: bundled`). It is developed here and
+This plugin ships with Eaves (`tier: bundled`). It is developed here and
 symlinked into the core for local work — see
-[enclave-ai](https://github.com/mackerson/enclave-ai).
+[eaves](https://github.com/mackerson/eaves).
 
 ## Permissions
 

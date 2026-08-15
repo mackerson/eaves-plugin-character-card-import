@@ -1,9 +1,9 @@
 {
-  "id": "com.enclave.character-card-import",
+  "id": "com.eaves.character-card-import",
   "name": "Character Card Import",
   "version": "1.0.0",
-  "description": "Import AI character cards (PNG with embedded metadata) as Enclave agents",
-  "author": "Enclave",
+  "description": "Import AI character cards (PNG with embedded metadata) as Eaves agents",
+  "author": "Eaves",
   "type": "import",
   "entry": "index.cjs",
   "sandboxVersion": 1,

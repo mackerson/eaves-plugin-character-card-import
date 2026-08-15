@@ -43,7 +43,7 @@ export function ImportResult({ result, onReset, onViewAgents }: ImportResultProp
         <span className="text-6xl block mb-4">🎉</span>
         <h2 className="text-2xl font-bold mb-2">Agent Created!</h2>
         <p className="text-text-secondary">
-          Your character has been imported as an Enclave agent.
+          Your character has been imported as an Eaves agent.
         </p>
       </div>
 

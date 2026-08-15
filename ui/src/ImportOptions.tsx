@@ -53,7 +53,7 @@ export function ImportOptions({ card, onStart, onBack, isLoading }: ImportOption
 
   // Pull the registry-shaped provider list from the host on mount.
   // Falls back to a single 'anthropic' option if the host IPC isn't wired
-  // (older Enclave builds without list-providers).
+  // (older Eaves builds without list-providers).
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -123,7 +123,7 @@ export function ImportOptions({ card, onStart, onBack, isLoading }: ImportOption
       <div>
         <h2 className="text-2xl font-bold mb-2">Configure Import</h2>
         <p className="text-text-secondary">
-          Customize how <strong>{data.name}</strong> will be created as an Enclave agent.
+          Customize how <strong>{data.name}</strong> will be created as an Eaves agent.
         </p>
       </div>
 
