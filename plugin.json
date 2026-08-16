@@ -1,7 +1,7 @@
 {
   "id": "com.eaves.character-card-import",
   "name": "Character Card Import",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Import AI character cards (PNG with embedded metadata) as Eaves agents",
   "author": "Eaves",
   "type": "import",
